@@ -2,7 +2,7 @@
 
 FROM centos:7
 MAINTAINER nothingdocker "84727906@qq.com"
-ENV REFRESHED_AT 20170204
+ENV REFRESHED_AT 20170410
 ENV container docker
 
 RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == \
