@@ -1,0 +1,11 @@
+[Unit]   
+Description=Auto Run Script
+After=network.target
+
+[Service]    
+Type=idle
+TimeoutStartSec=0
+ExecStart=/autorun 
+    
+[Install]
+WantedBy=multi-user.target
