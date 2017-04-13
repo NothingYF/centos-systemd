@@ -16,12 +16,16 @@ rm -f /lib/systemd/system/basic.target.wants/*;\
 rm -f /lib/systemd/system/anaconda.target.wants/*;\
 echo "export PS1='[\u@\h \W]\$ '" >> ~/.bash_profile;\
 /usr/bin/cp -rf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime;
-
-RUN yum -y install epel-release;yum -y install net-tools;yum -y install wget;yum clean all;
+RUN yum -y install epel-release net-tools wget openssh-server openssh-clients;yum clean all;
 VOLUME [ "/sys/fs/cgroup" ]
+COPY sshd_config /etc/ssh/sshd_config
+COPY authorized_keys /root/.ssh/authorized_keys
+RUN echo "root:nothingdocker0#" | chpasswd
+
 COPY entrypoint.sh /entrypoint.sh
 COPY autorun.service /etc/systemd/system/autorun.service
 COPY autorun /autorun
 RUN systemctl enable autorun.service
+EXPOSE 22
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["/usr/sbin/init"]
