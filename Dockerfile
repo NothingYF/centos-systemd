@@ -1,7 +1,7 @@
 # Version 1.0.0
 
 FROM centos:7
-MAINTAINER nothingdocker "84727906@qq.com"
+MAINTAINER nothingdocker 
 ENV REFRESHED_AT 20170410
 ENV container docker
 
