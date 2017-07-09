@@ -29,6 +29,8 @@ COPY entrypoint.sh /entrypoint.sh
 COPY autorun.service /etc/systemd/system/autorun.service
 COPY autorun /autorun
 RUN systemctl enable autorun.service
+RUN echo "alias \"n=netstat -ltpn\"" >> /etc/bashrc;\
+	echo "alias \"sc=supervisorctl\"" >> /etc/bashrc;
 EXPOSE 22
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["/usr/sbin/init"]
