@@ -20,6 +20,7 @@ RUN yum -y install epel-release net-tools wget openssh-server openssh-clients;yu
 RUN yum -y install supervisor; yum clean all;\
 	wget -O /usr/lib/systemd/system/supervisord.service https://github.com/Supervisor/initscripts/raw/master/centos-systemd-etcs; \
 	systemctl enable supervisord.service
+RUN yum -y install vim telnet;yum clean all;
 VOLUME [ "/sys/fs/cgroup" ]
 COPY sshd_config /etc/ssh/sshd_config
 COPY authorized_keys /root/.ssh/authorized_keys
