@@ -16,7 +16,7 @@ rm -f /lib/systemd/system/basic.target.wants/*;\
 rm -f /lib/systemd/system/anaconda.target.wants/*;\
 echo "export PS1='[\u@\h \W]\$ '" >> ~/.bash_profile;\
 /usr/bin/cp -rf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime;
-RUN yum -y install epel-release net-tools wget openssh-server openssh-clients;yum clean all;
+RUN yum -y install epel-release net-tools wget openssh-server openssh-clients which;yum clean all;
 RUN yum -y install supervisor; yum clean all;\
 	wget -O /usr/lib/systemd/system/supervisord.service https://github.com/Supervisor/initscripts/raw/master/centos-systemd-etcs; \
 	systemctl enable supervisord.service
